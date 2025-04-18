@@ -9,16 +9,27 @@
 <body>
   <h1>Home</h1>
   <button id="allBooks">Check Book Lib</button>
-  <div class="books">
+  <div class="container">
+   <div class="books">
      <label for="findBook">Find book by id</label>
      <input value="" type="text" name="findBook" id="findBook" type="number">
      <button id="FindBookBtn">Find Book by id</button>
-  </div>
+   </div>
 
-  <div class="books">
-      <label for="deleteBook">Delete book by id</label>
-      <input value="" type="text" name="deleteBook" id="deleteBook" type="number">
-      <button id="deleteBookBtn">Delete book by id</button>
+   <div class="books">
+     <label for="deleteBook">Delete book by id</label>
+     <input value="" type="text" name="deleteBook" id="deleteBook" type="number">
+     <button id="deleteBookBtn">Delete book by id</button>
+   </div>
+
+   <div class="books">
+    <label for="addBook">Add Book</label>
+    <input value="" type="text" name="addBook" id="Id" placeholder="Id book">
+    <input value="" type="text" name="addBook" id="Name" placeholder="Name book">
+    <input value="" type="text" name="addBook" id="Author" placeholder="Author book">
+    <input value="" type="text" name="addBook" id="Price" placeholder="Price book">
+    <button id="addBook">Add book</button>
+   </div>
   </div>
 </body>
 <script src="./books.js"></script>

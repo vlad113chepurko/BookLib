@@ -1,5 +1,14 @@
 * {
   box-sizing: border-box;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  background-color: #e4e4e4;
 }
 
 body {
@@ -7,12 +16,55 @@ body {
 }
 
 .books {
-  width: 200px;
+  width: 800px;
   height: auto;
 
-  margin: 0 auto;
-  border: 1px solid red;
+  margin: 100px auto;
+  padding: 1rem;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: #b8b8b8;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+input {
+  height: 40px;
+  width: 80%;
+  outline: none;
+  padding: 10px;
+
+  border: none;
+  background: none;
+  border-bottom: 2px solid #ffffff;
+
+  margin-top: 10px;
+  transition: 200ms ease-in-out;
+  &:focus {
+    transform: scale(1.1);
+  }
+}
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+button {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(248, 220, 242);
+  padding: 5px;
+
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+
+  margin-top: 10px;
+
+  &:hover {
+    background-color: rgb(249, 187, 235);
+  }
 }
