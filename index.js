@@ -39,11 +39,6 @@ app.get('/books/:id', (req, res) => {
       return res.status(500).send("Error parsing JSON");
     }
 
-    if (!Array.isArray(books)) {
-      console.error("Books data is not an array");
-      return res.status(500).send("Books data is not an array");
-    }
-
     const book = books.find(b => b.id === bookId);
     if (book) {
       res.json(book);
@@ -53,8 +48,45 @@ app.get('/books/:id', (req, res) => {
   });
 });
 
+app.delete('/booksdelete/:id', (req, res) => {
+  const bookId = parseInt(req.params.id, 10);
+
+  fs.readFile(booksFilePath, 'utf-8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("Server error!");
+    }
+
+    let jsonData;
+    try {
+      jsonData = JSON.parse(data);
+    } catch (e) {
+      console.error("Error parsing JSON", e);
+      return res.status(500).send("Error parsing JSON");
+    }
+
+    const books = jsonData.books;
+
+    const bookIndex = books.findIndex(b => b.id === bookId);
+
+    if (bookIndex === -1) {
+      return res.status(404).json({ message: "Book not found" });
+    }
+
+    const deletedBook = books.splice(bookIndex, 1)[0];
+
+    fs.writeFile(booksFilePath, JSON.stringify({ books }, null, 2), 'utf-8', (err) => {
+      if (err) {
+        console.error("Error", err);
+        return res.status(500).send("Error");
+      }
+
+      res.json({ message: "Book deleted", book: deletedBook });
+    });
+  });
+});
+
 
 app.listen(3000, () => {
   console.log(`🚀 Server is running on http://localhost:${3000}`);
 });
-
